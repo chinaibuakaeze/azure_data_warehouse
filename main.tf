@@ -86,12 +86,12 @@ resource "azurerm_synapse_sql_pool" "bikedatapool" {
 
 
 resource "time_sleep" "wait_for_synapse" {
-  create_duration = "60s"
+  create_duration = "10s"
 
   depends_on = [azurerm_synapse_firewall_rule.allowAcc]
 }
 
-#linked service for blob storafe
+#linked service for blob storage
 resource "azurerm_synapse_linked_service" "bloblink" {
   name                 = "bloblink"
   synapse_workspace_id = azurerm_synapse_workspace.bikedataspace.id
@@ -112,7 +112,7 @@ resource "azurerm_synapse_linked_service" "postgreslink" {
   type                 = "AzurePostgreSql"
   type_properties_json = <<JSON
 {
-  "connectionString": "${azurerm_storage_account.bikedatastc.primary_connection_string}"
+  "connectionString": "host=bikedata.postgres.database.azure.com; port=5432; database=postgres; UID=china; password=bebe1234!; EncryptionMethod=1"
 }
 JSON
 
