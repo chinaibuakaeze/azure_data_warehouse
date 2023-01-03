@@ -39,7 +39,7 @@ The terraform code is stored in `main.tf` and when you run `terraform apply` it 
 * linked service that links the postgres sql server to azure synapse
 
 ## Star Schema for Divvy Bikeshare Dataset
-![Star Schema](/Downloads/image.png)
+![Star Schema](/assets/image.png)
 
 ## How to run the code
 1. Ensure you have Azure ClI configured, give proper permissions to terraform to create Azure resources. Finally ensure that the user role has appropriate IAM permissions for the subscription. This is really important for creating additional resources for example creating firewall rules and datalake gen 2 filesystem in azure storage account.
