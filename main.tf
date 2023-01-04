@@ -86,7 +86,7 @@ resource "azurerm_synapse_sql_pool" "bikedatapool" {
 
 
 resource "time_sleep" "wait_for_synapse" {
-  create_duration = "10s"
+  create_duration = "30s"
 
   depends_on = [azurerm_synapse_firewall_rule.allowAcc]
 }
