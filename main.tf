@@ -38,7 +38,7 @@ resource "azurerm_postgresql_flexible_server_firewall_rule" "AllowAll" {
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "255.255.255.255"
 }
-
+# Create azure storage account
 resource "azurerm_storage_account" "bikedatastc" {
   name                     = "bikedatastc"
   resource_group_name      = azurerm_resource_group.dataeng.name
@@ -50,11 +50,10 @@ resource "azurerm_storage_account" "bikedatastc" {
 
 }
 
-
+# Create azure datalake gen 2 filesystem
 resource "azurerm_storage_data_lake_gen2_filesystem" "bikedatafs" {
   name               = "bikedatafs"
   storage_account_id = azurerm_storage_account.bikedatastc.id
-  
 }
 
 
@@ -86,7 +85,7 @@ resource "azurerm_synapse_sql_pool" "bikedatapool" {
 
 
 resource "time_sleep" "wait_for_synapse" {
-  create_duration = "30s"
+  create_duration = "60s"
 
   depends_on = [azurerm_synapse_firewall_rule.allowAcc]
 }
